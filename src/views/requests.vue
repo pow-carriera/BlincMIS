@@ -1,6 +1,8 @@
 <script setup>
-import History from '../components/timing.vue'
+import Requeests from '../components/request.vue'
 import Sidebar from '../components/sidebar.vue';
+// import for debugging purposes
+import History from '../components/timing.vue'
 </script>
 <template>
   <div class="content-fixing">
@@ -12,7 +14,9 @@ import Sidebar from '../components/sidebar.vue';
     </div>
 
     <div class="fix-position">
-      <History />
+      <Requeests />
+      <!-- <History /> -->
+
     </div>
   </div>
 </template>

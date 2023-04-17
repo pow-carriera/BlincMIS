@@ -1,100 +1,227 @@
 <template>
-    <div class="time-tracking">
-      <div class="time-tracking__container">
-        <h1 class="time-tracking__title">Time Tracker</h1>
-        <div class="time-tracking__clock">
-          <div v-if="!isClockedIn" class="time-tracking__clock-in" @click="clockIn">
-            <span>Time In</span>
-          </div>
-          <div v-else class="time-tracking__clock-out" @click="clockOut">
-            <span>Time Out</span>
-          </div>
-        </div>
-        <div class="time-tracking__status">
-          <span v-if="!isClockedIn">You are currently not clocked in.</span>
-          <span v-else>You clocked in at {{ clockedInTime }}.</span>
-        </div>
-      </div>
+  <div class="slds-m-around_medium">
+    <div class="header">
+      <h1 class="slds-text-heading_large slds-m-bottom_medium">Time Tracker</h1>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        isClockedIn: false,
-        clockedInTime: null,
-      };
+    <table class="slds-table slds-table_bordered slds-table_striped slds-m-top_medium" v-if="logs.length > 0">
+      <thead>
+        <tr class="slds-text-title_caps">
+          <th scope="col">Date</th>
+          <th scope="col">Time In</th>
+          <th scope="col">Time Out</th>
+          <th scope="col">Hours Worked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(log, index) in logs" :key="index">
+          <td>{{ log.date }}</td>
+          <td>{{ log.timeIn }}</td>
+          <td>{{ log.timeOut }}</td>
+          <td>{{ log.hoursWorked }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="slds-m-bottom_medium" v-if="!clockedIn">
+      <button class="slds-button slds-button_brand" @click="clockIn">Clock In</button>
+    </div>
+    <div class="slds-m-bottom_medium" v-else>
+      <button class="slds-button slds-button_brand" @click="clockOut">Clock Out</button>
+    </div>
+    <button class="clearbtn" @click="clearLogs">Clear Logs</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      clockedIn: false,
+      timeIn: null,
+      timeOut: null,
+      logs: []
+    }
+  },
+  methods: {
+    clockIn() {
+      this.clockedIn = true
+      this.timeIn = new Date().toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      })
     },
-    methods: {
-      clockIn() {
-        // Get the current time and update the UI
-        const now = new Date();
-        this.isClockedIn = true;
-        this.clockedInTime = now.toLocaleTimeString();
-      },
-      clockOut() {
-        // Get the current time and update the UI
-        const now = new Date();
-        this.isClockedIn = false;
-        this.clockedInTime = null;
-      },
+    clockOut() {
+      this.clockedIn = false
+      this.timeOut = new Date().toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      })
+      const currentDate = new Date().toLocaleDateString()
+      const startTime = new Date(`2000-01-01 ${this.timeIn}`)
+      const endTime = new Date(`2000-01-01 ${this.timeOut}`)
+      const timeDifference = (endTime - startTime) / 1000 // time difference in seconds
+      const hoursWorked = (timeDifference / 3600).toFixed(2) // time difference in hours with 2 decimal places
+      this.logs.push({
+        date: currentDate,
+        timeIn: this.timeIn,
+        timeOut: this.timeOut,
+        hoursWorked: hoursWorked
+      })
+      this.timeIn = null
+      this.timeOut = null
     },
-  };
-  </script>
-  
-  <style scoped>
-  .time-tracking {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+    clearLogs() {
+      this.logs = []
+    }
   }
+}
+</script>
+
+<style scoped>
+/* Salesforce Lightning Design System styles */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 3px .5px 3px #888888;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  position: relative;
+
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #d8dde6;
+  margin: 0;
+  align-items: center;
+
+}
+
+/* Salesforce-like table styles */
+
+
+.img-size-pos {
+  height: 10px;
+}
+
+.slds-text-heading_large {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 0;
+  box-shadow: 0 8px 6px -6px #606a7b;
+}
+
+.slds-m-around_medium {
+  height: 100%;
+  width: 100%;
+
+}
+
+.slds-buttones {
+  padding: 8px;
+  background-color: #0070E0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 90%;
+  margin-right: auto;
+  z-index:999 ;
+
+}
+
+.slds-button {
+  padding: 8px;
+  background-color: #0070E0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 80%;
+  margin-right: 0;
+  margin-top: 3%;
+  z-index: 999;
+
+}
+
+.clearbtn {
+  padding: 8px;
+  background-color: #0070E0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-top: 1%;
+  top: 0;
+  margin-left: 80%;
+  z-index: 999;
+
+}
+
+.slds-table {
+  background-color: #f3f5f9;
+  width: 1000px;
+}
+
+.slds-button_brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  .time-tracking__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .time-tracking__title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .time-tracking__clock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100%;
-    background-color: #0070e0;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .time-tracking__clock-in,
-  .time-tracking__clock-out {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    font-size: 24px;
-    color: #fff;
-  }
-  
-  .time-tracking__status {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-  }
-  </style>
-  
+}
+
+.slds-table th {
+  background-color: #fff;
+  font-weight: bold;
+  color: #606a7b;
+}
+
+.slds-m-top_medium {
+  align-items: center;
+  justify-content: center;
+}
+
+.slds-table td {
+  background-color: #ffffff;
+  color: #606a7b;
+}
+
+.header {
+  background-color: #fff;
+}
+
+.slds-table_bordered th,
+.slds-table_bordered td {
+  border: 1px solid #d8dde6;
+}
+
+.slds-line-height_reset {
+  line-height: 1.3;
+}
+
+.slds-table_fixed-layout {
+  table-layout: fixed;
+}
+
+.slds-text-title_caps {
+  text-transform: uppercase;
+  font-size: 12px;
+}</style>

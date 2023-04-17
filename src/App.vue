@@ -1,15 +1,12 @@
 <script setup>
-import home from './views/home.vue';
-
-
+import home from './views/home.vue'
 </script>
 
 <template>
-<div class="app">
+  <div class="app">
     <!-- Sidebar -->
 
     <!-- Content -->
     <router-view />
-</div>
+  </div>
 </template>
-

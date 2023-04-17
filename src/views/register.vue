@@ -1,8 +1,8 @@
 <script setup>
-import regis from '../components/signup.vue'
-
+import SignupComponent from '../components/signup.vue'
+import LoginComponent from '../components/login.vue'
 </script>
 <template>
-    <regis />
-
- </template>
+  <SignupComponent />
+  <!-- <LoginComponent /> -->
+</template>

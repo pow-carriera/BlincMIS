@@ -3,9 +3,6 @@ import signin from '../components/login.vue'
 </script>
 
 <template>
-
-<signin />
+  <signin />
 </template>
-<style>
-
-</style>
+<style></style>
