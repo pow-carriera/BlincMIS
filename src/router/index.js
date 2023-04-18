@@ -9,12 +9,16 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/index',
+      component: () => import('../views/index.vue')
+    },
+    {
       path: '/request',
       component: () => import('../views/requests.vue')
     },
     {
-      path: '/history',
-      component: () => import('../views/historya.vue')
+      path: '/attendance',
+      component: () => import('../views/attendance.vue')
     },
     {
       path: '/login',
@@ -31,7 +35,11 @@ const router = createRouter({
     {
       path: '/profile',
       component: () => import('../views/profile.vue')
-    }
+    },
+    {
+      path: '/calendar',
+      component: () => import('../views/calendar.vue')
+    },
   ]
 })
 

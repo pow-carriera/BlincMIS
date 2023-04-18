@@ -5,15 +5,16 @@
                 <span class="material-icons">arrow_forward</span>
             </button>
         </div>
-        <router-link to="/" class="button">
+        <router-link to="/" class="logo-css">
             <div class="material-icons">
                 <img :src="logoURL" alt="Logo" />
             </div>
         </router-link>
+        <br>
         <hr class="solid">
-
+<br>
         <div class="menu">
-            <router-link to="/" class="button">
+            <router-link to="/index" class="button">
                 <span class="material-icons">leaderboard
                 </span>
                 <span class="text">Dashboard</span>
@@ -26,15 +27,17 @@
                 <span class="material-icons">mail</span>
                 <span class="text">Requests</span>
             </router-link>
-            <router-link to="/employees" class="button">
-                <span class="material-icons">group</span>
-                <span class="text">Employees</span>
+            <router-link to="/calendar" class="button">
+                <span class="material-icons">calendar_month</span>
+                <span class="text">Calendar</span>
             </router-link>
             <router-link to="/profile" class="button">
                 <span class="material-icons">person</span>
                 <span class="text">Profile</span>
             </router-link>
         </div>
+        <br>
+        <hr class="solid">
 
         <div class="flex"></div>
 
@@ -48,6 +51,7 @@
             </router-link>
 
         </div>
+        
     </aside>
 </template>
    
@@ -64,6 +68,9 @@ const ToggleMenu = () => {
 </script>
    
 <style lang="scss" scoped>
+.logo-url{
+text-decoration: none;
+}
 aside {
     box-shadow: 5px 0 5px -5fpx #333;
     border-radius: 0px 0px 0px 0px;

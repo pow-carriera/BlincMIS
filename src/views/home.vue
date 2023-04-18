@@ -1,8 +1,8 @@
 <script setup>
-import Sidebar from '../components/sidebar.vue'
+import LoginComponent from '../components/login.vue';
 </script>
 
 <template>
-  <Sidebar/>
+  <LoginComponent />
 </template>
 <style></style>

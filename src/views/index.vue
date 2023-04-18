@@ -1,6 +1,6 @@
 <script setup>
-import timing from '../components/history.vue'
+import sidebar from '../components/sidebar.vue';
 </script>
 <template>
-  <timing />
+<sidebar />
 </template>
