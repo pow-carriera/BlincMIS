@@ -33,10 +33,21 @@
             </table>
         </div>
         <div class="legend">
-            <h2 class="legend-pos">legend: <div class="pink"></div>
-                <div class="blue"></div>
-                <div class="red"></div>
-            </h2>
+            <h2 class="legend-pos">legend: 
+            </h2><br>
+                <ul>
+                <li>
+                    <div class="color-pink"></div>
+                </li>
+                <br>
+                <li>
+                    <div class="color-blue"></div>
+                </li><br><li>
+                    
+                    <div class="color-red"></div>
+                </li>
+                </ul>
+            
         </div>
     </div>
 </template>
@@ -139,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 .header {
     background-color: #fff;
 }
@@ -149,6 +161,10 @@ button {
     box-shadow: 0px 1px 60px 1px #000;
     margin: 50px;
 }
+li{
+    list-style: none;
+}
+
 
 .slds-text-heading_large {
     font-family: 'Times New Roman', Times, serif;
@@ -191,7 +207,24 @@ button {
     margin-left: 22%;
     width: 90%;
 }
-
+.color-red{
+    background: red;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.color-blue{
+    background: blue;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.color-pink{
+    background: pink;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
 .calendar-header button {
     background: none;
     border: none;
@@ -204,9 +237,6 @@ table {
     border-collapse: collapse;
     padding: 0%;
     margin-left: 10%;
-
-
-
 }
 
 th,

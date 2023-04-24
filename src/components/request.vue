@@ -77,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-/* App.vue */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 .header {
   background-color: #fff;
 }
@@ -89,6 +89,7 @@ export default {
   padding-bottom: 15px;
   padding-left: 30px;
   font-weight: bold;
+  width: 100%;
   color: #000;
   margin-top: 0;
   box-shadow: 0 8px 6px -6px #606a7b;
@@ -202,6 +203,7 @@ table {
   margin-top: 25px;
   position: relative;
 
+
 }
 
 th,
@@ -312,6 +314,7 @@ td {
 
 .header {
   background-color: #fff;
+  width: 100%;
 }
 
 .slds-table_bordered th,

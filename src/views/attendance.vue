@@ -1,12 +1,14 @@
 <script setup>
 import History from '../components/timing.vue'
 import Sidebar from '../components/sidebar.vue';
+// import SearchBar from '../components/attendance/SearchBar.Vue'
 </script>
 
 <template>
   <div class="content-fixing">
     <div>
       <div class="container-1">
+        <!-- <SearchBar /> -->
 
         <Sidebar />
       </div>

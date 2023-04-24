@@ -1,7 +1,7 @@
 <template>
   <div class="slds-m-around_medium">
     <div class="header">
-      <h1 class="slds-text-heading_large slds-m-bottom_medium">Time Tracker</h1>
+      <h1 class="slds-text-heading_large slds-m-bottom_medium">Attendance</h1>
     </div>
     <table class="slds-table slds-table_bordered slds-table_striped slds-m-top_medium" v-if="logs.length > 0">
       <thead>
@@ -12,6 +12,7 @@
           <th scope="col">Hours Worked</th>
         </tr>
       </thead>
+      <hr >
       <tbody>
         <tr v-for="(log, index) in logs" :key="index">
           <td>{{ log.date }}</td>
@@ -86,26 +87,38 @@ export default {
 table {
   border-collapse: collapse;
   width: 100%;
-  box-shadow: 3px .5px 3px #888888;
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
   position: relative;
+  border: 1px solid #4C519F;
+
+  
 
 }
 
-th,
+th{
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+
+  margin: 0;
+  align-items: center;
+}
+
 td {
   padding: 8px;
   text-align: left;
   vertical-align: middle;
-  border: 1px solid #d8dde6;
   margin: 0;
   align-items: center;
-
 }
-
+hr{
+  border-top: #4C519F 1px solid;
+  width: 426.5%;
+  margin: 0;
+}
 /* Salesforce-like table styles */
 
 
@@ -121,7 +134,7 @@ td {
   padding-bottom: 15px;
   padding-left: 30px;
   font-weight: bold;
-  color: #000;
+  color: #4c519f;
   margin-top: 0;
   box-shadow: 0 8px 6px -6px #606a7b;
 }
@@ -179,6 +192,8 @@ td {
 .slds-table {
   background-color: #f3f5f9;
   width: 1000px;
+
+
 }
 
 .slds-button_brand {
@@ -208,10 +223,7 @@ td {
   background-color: #fff;
 }
 
-.slds-table_bordered th,
-.slds-table_bordered td {
-  border: 1px solid #d8dde6;
-}
+
 
 .slds-line-height_reset {
   line-height: 1.3;

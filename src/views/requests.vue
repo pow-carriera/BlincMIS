@@ -1,8 +1,6 @@
 <script setup>
 import Requeests from '../components/request.vue'
 import Sidebar from '../components/sidebar.vue';
-// import for debugging purposes
-import History from '../components/timing.vue'
 </script>
 <template>
   <div class="content-fixing">
@@ -32,7 +30,7 @@ import History from '../components/timing.vue'
 }
 
 .fix-position {
-  width: 100%;
+  max-width: 100%;
   z-index: 1;
 
 }

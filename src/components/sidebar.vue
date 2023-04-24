@@ -11,7 +11,6 @@
             </div>
         </router-link>
         <br>
-        <hr class="solid">
 <br>
         <div class="menu">
             <router-link to="/index" class="button">
@@ -37,7 +36,6 @@
             </router-link>
         </div>
         <br>
-        <hr class="solid">
 
         <div class="flex"></div>
 
@@ -112,7 +110,8 @@ aside {
             border: hidden;
             cursor: pointer;
             outline: none;
-            background-color: #4C519F;
+            background-color: #4c519f;
+
 
             .sidebar .closebtn {
                 position: absolute;
@@ -130,7 +129,7 @@ aside {
 
             &:hover {
                 .material-icons {
-                    color: var(--primary);
+                    color: #fff;
                     transform: translateX(0.5rem);
                 }
             }
@@ -138,10 +137,6 @@ aside {
     }
 
 
-    hr.solid {
-        border-top: 1px solid #fff;
-        width: 100%;
-    }
 
     h3,
     .button .text {
@@ -201,18 +196,22 @@ aside {
     }
 
     a {
-        box-shadow: inset 150 0 0 0 #54b3d6;
-        color: #54b3d6;
+        box-shadow: inset 150 0 0 0 ;
+        color:linear-gradient(90deg, rgba(221,76,121,0) 0%, rgba(221,76,121,0.5) 50%, rgba(221,76,121,1) 90%);
+        color: #fff;
         padding: 0 .25rem;
         margin: 0 -.25rem;
+        background: linear-gradient(90deg, rgba(221,76,121,0) 0%, rgba(221,76,121,0.5) 50%, rgba(221,76,121,1) 90%)var(--p,0)/var(--p,0) no-repeat;
+        transition: .4s,background-position 0s;
         transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
     }
+    
 
     a:hover {
         color: #fff;
-
-
         box-shadow: inset -10px 0px 0px 0px #C183A0;
+        --p: 80%;
+    color: #fff;
     }
 
     .footer {
